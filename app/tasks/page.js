@@ -26,9 +26,12 @@ setLoaded(true);
 
 // Save tasks whenever they change
 useEffect(() => {
-if (loaded) {
-localStorage.setItem("studybuddy-tasks", JSON.stringify(tasks));
-}
+  if (loaded) {
+    localStorage.setItem("studybuddy-tasks", JSON.stringify(tasks));
+
+    // Notify the Dashboard that tasks have changed
+    window.dispatchEvent(new Event("tasksUpdated"));
+  }
 }, [tasks, loaded]);
 
 // Add or update task
