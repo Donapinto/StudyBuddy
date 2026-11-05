@@ -1,32 +1,27 @@
+"use client";
+
 import Link from "next/link";
 
-const metrics = [
-  { label: "Study time", value: "18.5h", detail: "This week" },
-  { label: "Average score", value: "88%", detail: "Across quizzes" },
-  { label: "Focus streak", value: "12 days", detail: "Consistent work" },
-  { label: "Goals met", value: "7/9", detail: "Completed" },
-];
-
-const subjectProgress = [
-  { subject: "BMA301TC1 - Computational Mathematics", progress: 92, hours: "4.5h", color: "from-blue-500 to-cyan-500" },
-  { subject: "BCS302G1 - Object Oriented Programming", progress: 86, hours: "3.8h", color: "from-violet-500 to-indigo-500" },
-  { subject: "BCS303G1 - Digital Design & Computer Organization", progress: 78, hours: "3.2h", color: "from-emerald-500 to-teal-500" },
-  { subject: "BCS304T1 - Operating Systems", progress: 81, hours: "2.6h", color: "from-amber-500 to-orange-500" },
-  { subject: "BCS305T1 - Data Structures & Algorithms", progress: 88, hours: "4.1h", color: "from-pink-500 to-rose-500" },
-  { subject: "BCS309P1 - Community Project", progress: 75, hours: "2.4h", color: "from-slate-500 to-gray-500" },
-];
+import { Navbar } from "@/components/Navbar";
+import { ProgressRow } from "@/components/ProgressRow";
+import { StatCard } from "@/components/StatCard";
+import { useStudyBuddy } from "@/context/StudyBuddyContext";
 
 const milestones = [
-  "Completed 3 revision sessions for BMA301TC1 and BCS302G1",
-  "Improved Java lab performance by 12% compared to the previous assessment",
+  "Completed 3 revision sessions for Mathematics and Java",
+  "Improved practical performance by 12% compared to the previous week",
   "Finished all weekly exercises for Data Structures and Algorithms",
-  "Maintained a consistent study streak across the 3D section timetable",
+  "Maintained a consistent study streak across the current semester plan",
 ];
 
 export default function ProgressPage() {
+  const { stats, subjects, tasks } = useStudyBuddy();
+
   return (
     <main className="min-h-screen bg-slate-100 px-6 py-8 text-slate-900">
-      <div className="mx-auto max-w-6xl">
+      <Navbar />
+
+      <div className="mx-auto max-w-6xl pt-8">
         <header className="mb-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-violet-600">
@@ -43,33 +38,28 @@ export default function ProgressPage() {
           </Link>
         </header>
 
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {metrics.map((item) => (
-            <div key={item.label} className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
-              <p className="text-sm text-slate-500">{item.label}</p>
-              <p className="mt-3 text-3xl font-bold text-slate-900">{item.value}</p>
-              <p className="mt-2 text-xs font-medium uppercase tracking-[0.12em] text-emerald-600">
-                {item.detail}
-              </p>
-            </div>
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {stats.map((item) => (
+            <StatCard
+              key={item.label}
+              label={item.label}
+              value={item.value}
+              change={item.change}
+              tone={item.tone}
+            />
           ))}
         </section>
 
         <section className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-          <h2 className="text-xl font-bold text-slate-900">Semester 3D course overview</h2>
+          <h2 className="text-xl font-bold text-slate-900">Current semester overview</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-            {[
-              { course: "BMA301TC1", title: "Computational Mathematics", faculty: "Mrs. Mary Jeney" },
-              { course: "BCS302G1", title: "Object Oriented Programming", faculty: "Mrs. Srividya Bhat" },
-              { course: "BCS303G1", title: "Digital Design & Computer Organization", faculty: "Mrs. Varsha M" },
-              { course: "BCS304T1", title: "Operating Systems", faculty: "Mrs. Chaitra Shree" },
-              { course: "BCS305T1", title: "Data Structures & Algorithms", faculty: "Dr. Poornima B" },
-              { course: "BCS309P1", title: "Community Project", faculty: "Department" },
-            ].map((item) => (
-              <div key={item.course} className="rounded-2xl bg-slate-50 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-violet-600">{item.course}</p>
-                <p className="mt-2 text-base font-bold text-slate-900">{item.title}</p>
-                <p className="mt-1 text-sm text-slate-600">{item.faculty}</p>
+            {subjects.map((subject) => (
+              <div key={subject.code} className="rounded-2xl bg-slate-50 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-violet-600">
+                  {subject.code}
+                </p>
+                <p className="mt-2 text-base font-bold text-slate-900">{subject.subject}</p>
+                <p className="mt-1 text-sm text-slate-600">{subject.hours} logged this week</p>
               </div>
             ))}
           </div>
@@ -85,22 +75,15 @@ export default function ProgressPage() {
             </div>
 
             <div className="space-y-5">
-              {subjectProgress.map((subject) => (
-                <div key={subject.subject}>
-                  <div className="mb-2 flex items-center justify-between text-sm">
-                    <span className="font-semibold text-slate-700">{subject.subject}</span>
-                    <span className="text-slate-500">{subject.hours}</span>
-                  </div>
-                  <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-200">
-                    <div
-                      className={`h-full rounded-full bg-gradient-to-r ${subject.color}`}
-                      style={{ width: `${subject.progress}%` }}
-                    />
-                  </div>
-                  <p className="mt-2 text-right text-xs font-medium text-slate-500">
-                    {subject.progress}% complete
-                  </p>
-                </div>
+              {subjects.map((subject) => (
+                <ProgressRow
+                  key={subject.code}
+                  code={subject.code}
+                  subject={subject.subject}
+                  progress={subject.progress}
+                  hours={subject.hours}
+                  color={subject.color}
+                />
               ))}
             </div>
           </div>
@@ -115,6 +98,12 @@ export default function ProgressPage() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-6 rounded-2xl bg-slate-50 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">Tasks</p>
+              <p className="mt-2 text-2xl font-bold text-slate-900">{tasks.length}</p>
+              <p className="text-sm text-slate-600">Planned and active study items this week</p>
+            </div>
           </div>
         </section>
       </div>

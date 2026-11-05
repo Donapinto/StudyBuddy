@@ -18,7 +18,6 @@ Then open http://localhost:3000 in your browser.
 - Home dashboard
 - Weekly timetable
 - Study progress overview
-- Task management
 
 ## Tech stack
 

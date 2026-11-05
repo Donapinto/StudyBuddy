@@ -1,3 +1,5 @@
+import { timetable } from "@/data/dummyData";
+
 const timeSlots = [
   "8:30-9:30",
   "9:30-10:30",
@@ -8,69 +10,6 @@ const timeSlots = [
   "03:30-04:30",
   "04:30-05:30",
 ];
-
-const timetable = {
-  MON: [
-    { code: "BCS104T1", label: "(CHM)", bg: "bg-[#8ad3ff]" },
-    { code: "BCS302G1", label: "(SB)", bg: "bg-[#30a0ff]" },
-    { code: "OOP (D1/D2)", label: "(SB/VM/KH/CHM)", bg: "bg-[#45d17a]" },
-    { code: "BMA301TC1", label: "(MJ)", bg: "bg-[#ff70d4]" },
-    { code: "BCS307A1", label: "(PB)", bg: "bg-[#f3b69d]" },
-    null,
-    null,
-    null,
-  ],
-  TUE: [
-    { code: "BCS308S1", label: "(SB)", bg: "bg-[#ff9f43]" },
-    { code: "BCS301G1", label: "(VM)", bg: "bg-[#46c2cf]" },
-    { code: "BCS305T1", label: "(PBV)", bg: "bg-[#4ddf7a]" },
-    { code: "BMA301TC1", label: "(MJ)", bg: "bg-[#ff70d4]" },
-    { code: "BCS302G1", label: "(SB)", bg: "bg-[#30a0ff]" },
-    { code: "BCS309P1", label: "", bg: "bg-[#1ac08d]" },
-    null,
-    null,
-  ],
-  WED: [
-    { code: "BCS302G1", label: "(SB)", bg: "bg-[#30a0ff]" },
-    { code: "BCS303G1", label: "(VM)", bg: "bg-[#37d7d5]" },
-    { code: "BCS305T1", label: "(PBV)", bg: "bg-[#4ddf7a]" },
-    { code: "BMA301TC1", label: "(MJ)", bg: "bg-[#ff70d4]" },
-    { code: "BCS309P1", label: "", bg: "bg-[#1ac08d]" },
-    { code: "Remedial Class", label: "", bg: "bg-[#d7d7d7]" },
-    null,
-    null,
-  ],
-  THU: [
-    { code: "BCS303G1", label: "(VM)", bg: "bg-[#37d7d5]" },
-    { code: "BCS304T1", label: "(CHM)", bg: "bg-[#b3a0ff]" },
-    { code: "10 SEC", label: "", bg: "bg-[#d6f0b0]" },
-    { code: "OOP (D2/D3)", label: "(SB/VM/CHM)", bg: "bg-[#45d17a]" },
-    { code: "BCS304T1", label: "(CHM)", bg: "bg-[#b3a0ff]" },
-    { code: "BCS305T1", label: "(PBV)", bg: "bg-[#4ddf7a]" },
-    { code: "BMA301TC1", label: "(MJ)", bg: "bg-[#ff70d4]" },
-    { code: "Additional Mathematics-I", label: "", bg: "bg-[#c0e1a2]" },
-  ],
-  FRI: [
-    { code: "OOP (D3/D0)", label: "(SB/VM/CHM)", bg: "bg-[#45d17a]" },
-    { code: "BCS304T1", label: "(CHM)", bg: "bg-[#b3a0ff]" },
-    { code: "BCS305T1", label: "(PBV)", bg: "bg-[#4ddf7a]" },
-    { code: "BMA301TC1", label: "(MJ)", bg: "bg-[#ff70d4]" },
-    { code: "BCS302G1", label: "(SB)", bg: "bg-[#30a0ff]" },
-    { code: "Remedial Class", label: "", bg: "bg-[#d7d7d7]" },
-    null,
-    null,
-  ],
-  SAT: [
-    { code: "BCS304T1", label: "(CHM)", bg: "bg-[#b3a0ff]" },
-    { code: "BCS303G1", label: "(VM)", bg: "bg-[#37d7d5]" },
-    { code: "BMA301TC1", label: "(MJ)", bg: "bg-[#ff70d4]" },
-    { code: "BCS305T1", label: "(PBV)", bg: "bg-[#4ddf7a]" },
-    { code: "BCS302G1", label: "(SB)", bg: "bg-[#30a0ff]" },
-    { code: "BMA301TC1", label: "(MJ)", bg: "bg-[#ff70d4]" },
-    { code: "BCS309P1", label: "", bg: "bg-[#1ac08d]" },
-    null,
-  ],
-};
 
 const courseTable = [
   { code: "BMA301TC1", name: "Computational Mathematics and Optimization", faculty: "Mrs. Mary Jeney (MJ)" },
