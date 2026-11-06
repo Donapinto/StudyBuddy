@@ -7,7 +7,7 @@ StudyBuddy is a student-friendly productivity platform designed to help students
 
 ## 2. Problem Statement
 
-Students often find it difficult to manage their study tasks, assignments, and daily schedules. They may forget important work or struggle to organize their time. StudyBuddy aims to solve this problem by providing a simple platform to manage academic activities in one place.
+Students often find it difficult to manage their study tasks, assignments, and deadlines. They may forget important work or struggle to organize their time. StudyBuddy aims to solve this problem by providing a simple platform to manage academic activities in one place.
 
 
 ## 3. Target Users
@@ -30,6 +30,7 @@ Students can use StudyBuddy to plan their daily study activities, add and manage
 - Students need a simple platform to manage their academic activities.
 - Students prefer managing all their study tasks in one place.
 - Students want to track their daily study progress.
+- Students sometimes forget assignment deadlines
 - Students prefer an easy-to-use interface without complicated features.
 
 ## 7. MVP Scope
@@ -44,6 +45,7 @@ The MVP will include:
 4. Create and manage study schedules.
 5. View completed and pending tasks.
 6. Store data using browser localStorage.
+7. Track assignment deadlines.
 
 ## 8. Out of Scope
 
